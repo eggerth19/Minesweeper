@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minesweeper</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>Minesweeper</header>
     <div class="center">Build your Minsweeper board</div>
-    <div class="box3 center"><input type="number" id="rows" min="1" max="40" value="10"><br/>Number of rows</div>
-    <div class="box3 center"><input type="number" id="columns" min="1" max="40" value="10"><br/>Number of columns<br/></div>
-    <div class="box3 center"><input type="number" id="mines" min="1" max="1600" value="10"><br/>Number of mines<br/></div>
-    <div class="center"><button class="generatebutton" onclick="doAjax()" id="genbutton">GENERATE</button></div>
+    <div class="box3 center">
+      <input type="number" id="rows" min="1" max="40" value="10" /><br />Number
+      of rows
+    </div>
+    <div class="box3 center">
+      <input
+        type="number"
+        id="columns"
+        min="1"
+        max="40"
+        value="10"
+      /><br />Number of columns<br />
+    </div>
+    <div class="box3 center">
+      <input
+        type="number"
+        id="mines"
+        min="1"
+        max="1600"
+        value="10"
+      /><br />Number of mines<br />
+    </div>
+    <div class="center">
+      <button class="generatebutton" onclick="startGame()" id="genbutton">
+        GENERATE
+      </button>
+    </div>
     <div class="center" id="minezone" oncontextmenu="return false;">
-        <!-- <div class="cell"><img src="bomb.png" sizes="10px,10px" alt="B"></div> -->
+      <!-- <div class="cell"><img src="bomb.png" sizes="10px,10px" alt="B"></div> -->
     </div>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
