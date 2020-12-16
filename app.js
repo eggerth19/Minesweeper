@@ -245,8 +245,6 @@ function startGame() {
     faultyInput('mines', r * c);
     return;
   }
-  //The URL to which we will send the request
-  var url = 'https://veff213-minesweeper.herokuapp.com/api/v1/minesweeper';
 
   var minePositions = [];
   var uniqueMinePos = 0;
