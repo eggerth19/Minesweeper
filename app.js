@@ -250,8 +250,8 @@ function startGame() {
   var uniqueMinePos = 0;
   while (uniqueMinePos < c) {
     var minePos = [
-      Math.floor(Math.random() * 10),
-      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * r),
+      Math.floor(Math.random() * c),
     ];
     console.log(minePos);
     if (minePositions.indexOf(minePos) === -1) {
