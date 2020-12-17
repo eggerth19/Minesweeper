@@ -1,104 +1,100 @@
-
 @import url('https://fonts.googleapis.com/css?family=Ibarra+Real+Nova|Montserrat&display=swap');
 
-html, body, div {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 12px;
+html,
+body,
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 12px;
 }
-
 
 header {
-    padding:10px 0px;
-    font-family: 'Montserrat';
-    font-weight: bold;
-    font-size: 3vmax;
-    text-align: center;
+  padding: 10px 0px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 3vmax;
+  text-align: center;
 }
 input {
-    width: 60px;
-    padding: 10px;
-    border-color: peru;
-    border-radius: 7px;
-    background-color: peachpuff;
-    color: saddlebrown;
-    margin: 5px;
+  width: 60px;
+  padding: 10px;
+  border-color: peru;
+  border-radius: 7px;
+  background-color: peachpuff;
+  color: saddlebrown;
+  margin: 5px;
 }
 .generatebutton {
-    width: 70%;
-    height: 60px;
-    padding: 10px;
-    border-color: rgb(31, 139, 49);
-    border-radius: 7px;
-    background-color: rgb(99, 218, 152);
-    color: rgb(13, 92, 72);
-    margin: 5px;
-    cursor: pointer;
+  width: 70%;
+  height: 60px;
+  padding: 10px;
+  border-color: rgb(31, 139, 49);
+  border-radius: 7px;
+  background-color: rgb(99, 218, 152);
+  color: rgb(13, 92, 72);
+  margin: 5px;
+  cursor: pointer;
 }
 .center {
-    text-align: center;
-    margin-top: 15px;
-    
+  text-align: center;
+  margin-top: 15px;
 }
 
 .box3 {
-    display: inline-block;
-    width: 33%;
-    margin-top: 10px;
-    margin-bottom: 2px;
-    margin-left: 0px;
-    margin-right: 0px;
+  display: inline-block;
+  width: 33%;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .cell {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    border-radius: 3px;
-    margin: 0px 1px;
-    background-color: darkolivegreen;
-    cursor: pointer;
-    padding: 0px;
-    
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  margin: 0px 1px;
+  background-color: darkolivegreen;
+  cursor: pointer;
+  padding: 0px;
 }
 
-.img_bomb{
-    width: 40px;
-    height: 40px;
-    margin: 0px;
-    position: relative;
-    top: -12px;
-    left: -20px;
+.img_bomb {
+  width: 40px;
+  height: 40px;
+  margin: 0px;
+  position: relative;
+  top: -12px;
+  left: -20px;
 }
 
-.img_flag{
-    width: 20px;
-    height: 20px;
-    margin: 0px;
-    position: relative;
-    top: 2px;
-    left: -10px;
+.img_flag {
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  position: relative;
+  top: 2px;
+  left: -10px;
 }
 
-.cellfix{
-    display: inline-block;
-    float: none;
-    position: absolute;
-
-    
+.cellfix {
+  display: inline-block;
+  float: none;
+  position: absolute;
 }
-.hint{
-    font-weight: 700;
-    font-size: 16px;
-    padding-top: 4px;
-    color: blue;  
+.hint {
+  font-weight: 700;
+  font-size: 16px;
+  padding-top: 4px;
+  color: blue;
 }
-.hint2{
-    color: green;  
+.hint2 {
+  color: green;
 }
-.hint3{
-    color: red;  
+.hint3 {
+  color: red;
 }

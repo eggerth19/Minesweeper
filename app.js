@@ -12,8 +12,6 @@ function generateGame() {
   console.log(board.cols);
   minezone.innerHTML = '<p>Go diggity</p>';
   minezone.style.minWidth = 27 * board.cols + 'px';
-  console.log('Mines:');
-  console.log(board.minePositions);
 
   var cellnr = 0;
   for (let ii = 0; ii < board.rows; ii++) {
@@ -25,11 +23,8 @@ function generateGame() {
         y: i,
         isNotClicked: true,
         isNotFlaged: true,
-        itIsBomb: isBomb(ii, i),
+        itIsBomb: isBomb(ii, i, cellnr),
       };
-      if (cells[cellnr].itIsBomb) {
-        bombs.push(cellnr);
-      }
       minezone.innerHTML +=
         '<div class="cell" onclick="doStuff(' +
         cellnr +
@@ -44,12 +39,13 @@ function generateGame() {
   }
 }
 
-function isBomb(x, y) {
+function isBomb(x, y, cellnr) {
   let bomb = false;
 
   for (let i = 0; i < board.mines; i++) {
     if (x == board.minePositions[i][0] && y == board.minePositions[i][1]) {
       bomb = true;
+      bombs.push(cellnr);
     }
   }
   return bomb;
@@ -64,7 +60,7 @@ function isNextToBomb(nbr, cnt = 0) {
     nbr - rows,
     nbr - rows + 1,
     nbr + 1,
-    nbr + 1 + rows,
+    nbr + (rows + 1),
     nbr + rows,
     nbr + (rows - 1),
   ];
@@ -98,7 +94,8 @@ function doStuff(nbr) {
       boom();
     }
     //if we click a cell with a neighbouring mine
-    else if ((near_bombs = isNextToBomb(nbr))) {
+    else if (isNextToBomb(nbr) > 0) {
+      var near_bombs = isNextToBomb(nbr);
       currentid.style.backgroundColor = 'LightGrey';
       if (near_bombs >= 3) {
         currentid.innerHTML =
@@ -120,11 +117,26 @@ function doStuff(nbr) {
       //a few condition for setting the neighbouring cells, depending on the position of the clicked cell
       //so we don't f.x. open cells on the left end if we click on the right end
       if (cells[nbr].y - 1 < 0) {
-        neighb = [nbr - rows, nbr + 1, nbr + rows];
+        neighb = [nbr - rows, nbr + 1, nbr + rows, nbr + rows + 1];
       } else if (cells[nbr].y + 1 >= board.cols) {
-        neighb = [nbr - 1, nbr - rows, nbr + rows];
+        neighb = [
+          nbr - 1,
+          nbr - rows,
+          nbr - rows - 1,
+          nbr + rows,
+          nbr + rows - 1,
+        ];
       } else {
-        neighb = [nbr - 1, nbr - rows, nbr + 1, nbr + rows];
+        neighb = [
+          nbr - 1,
+          nbr - rows - 1,
+          nbr - rows,
+          nbr - rows + 1,
+          nbr + 1,
+          nbr + (rows + 1),
+          nbr + rows,
+          nbr + (rows - 1),
+        ];
       }
 
       neighb.forEach((neighb_cell) => {
@@ -224,6 +236,15 @@ function getLenght(list) {
   return counter;
 }
 
+function isArrayInArray(source, search) {
+  for (let i = 0; i < source.length; i++) {
+    if (source[i][0] === search[0] && source[i][1] === search[1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function startGame() {
   //Prepare the parameter value for 'myParam'
   var r = document.getElementById('rows').value;
@@ -241,25 +262,25 @@ function startGame() {
   } else if (c < 1 || c > 40) {
     faultyInput('columns', 40);
     return;
-  } else if (m < 1 || m > r * c) {
-    faultyInput('mines', r * c);
+  } else if (m < 1 || m >= r * c) {
+    faultyInput('mines', r * c - 1);
     return;
   }
 
   var minePositions = [];
-  var uniqueMinePos = 0;
-  while (uniqueMinePos < c) {
+  for (let i = 0; i < m; i++) {
     var minePos = [
       Math.floor(Math.random() * r),
       Math.floor(Math.random() * c),
     ];
-    console.log(minePos);
-    if (minePositions.indexOf(minePos) === -1) {
-      minePositions.push(minePos);
-      uniqueMinePos++;
+    while (isArrayInArray(minePositions, minePos)) {
+      var minePos = [
+        Math.floor(Math.random() * r),
+        Math.floor(Math.random() * c),
+      ];
     }
+    minePositions.push(minePos);
   }
-  console.log(minePositions);
 
   board = {
     rows: r,
